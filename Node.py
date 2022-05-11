@@ -19,3 +19,28 @@ class Node:
 
 	def setAuxTree(self, auxTree):
 		self._auxTree = auxTree
+
+	def isLeaf(self):
+		if self._left == NULL and self._right == NULL:
+			return True
+		else:
+			return False
+
+	def getLeaves(self):
+		leaves = []
+
+		# Leaf
+		if self.isLeaf():
+			return [self._value]
+
+		# Get left side		
+		if self._left != NULL:
+			leaves + self._getLeaves(self._left)
+
+		# Get right side
+		if self._right != NULL:
+			leaves + self._getLeaves(self.right)
+
+		return leaves
+
+
