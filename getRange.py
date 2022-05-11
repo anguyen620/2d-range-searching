@@ -1,3 +1,25 @@
+def range1D(node, query, y0, y1):
+	val = node.getValue()
+
+	# If node is a leaf
+	if node.getleft() == NULL and node.getRight() == NULL:
+		# Check if node in range
+                if val >= query.getLowY() and val <= query.getHighY():
+                        return [val]
+                else:
+                        return []	
+
+	# If query contains [y0,y1]
+        elif y0 >= query.getLowY() and y1 <= query.getHighY():
+		return node.getLeaves()
+
+	# If query is disjoint with [y0, y1]
+        elif query.getHighY() < y0 or query.getLowY() > y1:
+                return []
+
+        else:
+		return range1D(node.getLeft(), query, y0, val) + range1D(node.getRight(), query, val, y1)
+
 def range2D(node, query, x0, x1):
 	val = node.getValue()
 
