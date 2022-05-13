@@ -1,16 +1,16 @@
-def insert(rootNode, interval):	
-    # Base case
-    if rootNode == NULL:
-        return Node()
+import Node
 
-    low = rootNode.getInterval().getLow()
+# takes a x-sorted list of (x,y) tuples
+createTree(points, flag=True):
+	if len(points) == 1:
+		node = Node(points[0])
+	else:
+		middle = len(points)//2
+		node = Node(points[middle])
+		node.setLeft(createTree(points[:middle], flag)
+		node.setRight(createTree(points[middle+1:], flag)
 
-    # If low value is smaller, new interval goes to the left
-    if interval.getLow() < low:
-        rootNode.setLeft(insert(rootNode.getLeft(), interval))
+	if flag:
+		node.setAuxTree(createTree(sorted(points, key=lambda x: x[1]), flag=False))
 
-    # Else, goes to the right
-    else:
-        rootNode.setRight(insert(rootNode.getRight(), interval))
-
-
+	return node
