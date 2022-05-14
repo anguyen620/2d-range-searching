@@ -1,6 +1,6 @@
 from TreeConstruction import *
 from Query import *
-from getRange import *
+from RangeSearching import *
 
 points = [(1,1), (1,4), (2,0), (2,2), (4,3)]
 tree = createTree(points)
