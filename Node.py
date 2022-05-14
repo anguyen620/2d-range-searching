@@ -1,5 +1,5 @@
 class Node:
-	def __init__(self, val, left = NULL, right = NULL, auxTree = NULL):
+	def __init__(self, val, left = None, right = None, auxTree = None):
 		self._value = val
 		self._left = left
 		self._right = right
@@ -17,11 +17,17 @@ class Node:
 	def getAuxTree(self):
 		return self._auxTree
 
+	def setRight(self, node):
+		self._right = node
+
+	def setLeft(self, node):
+		self._left = node
+
 	def setAuxTree(self, auxTree):
 		self._auxTree = auxTree
 
 	def isLeaf(self):
-		if self._left == NULL and self._right == NULL:
+		if self._left == None and self._right == None:
 			return True
 		else:
 			return False
@@ -34,11 +40,11 @@ class Node:
 			return [self._value]
 
 		# Get left side		
-		if self._left != NULL:
+		if self._left != None:
 			leaves + self._getLeaves(self._left)
 
 		# Get right side
-		if self._right != NULL:
+		if self._right != None:
 			leaves + self._getLeaves(self.right)
 
 		return leaves
